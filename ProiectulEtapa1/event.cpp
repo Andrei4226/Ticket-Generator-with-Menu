@@ -1,4 +1,5 @@
 #include "event.h"
+#include "otherEvent.h"
 int event::nrMaxTickets = 100;
 int event::nrTicketsMaxVIP = 0.1 * event::nrMaxTickets;
 int event::nrTicketsMaxStandard = 0.9 * event::nrMaxTickets;
@@ -114,8 +115,6 @@ bool event::check()
 	return false;
 }
 
-
-
 int event::getnrMaxTickets()
 {
 	return nrMaxTickets;
@@ -142,7 +141,7 @@ event:: ~event()
 
 int event:: the_current_number_tickets_left() //is a static methood, i used static in event.h
 {
-	return nrTicketsVipNow + event::nrTicketsStandardNow;
+	return event::nrTicketsVipNow + event::nrTicketsStandardNow;
 }
 
 int event::the_number_tickets_sold()
@@ -227,3 +226,26 @@ istream& operator>>(istream& in, event& ev)
 	in >> ev.name_event;
 	return in;
 };
+
+ void event::print_temp()
+ {
+	 cout << "Temperature: " << 22 << " degrees "  << "C" << endl;
+ }
+ void event::addElement(int x)
+ {
+	 VectTickets.push_back(x);
+ }
+ int event::getElement(int index)
+ {
+	 return VectTickets[index];
+ }
+ vector<int> event::getVect()
+ {
+	 return VectTickets;
+ }
+ int event::getElemVect(int i)
+ {
+	 return VectTickets[i];
+ }
+
+

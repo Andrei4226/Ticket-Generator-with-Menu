@@ -3,7 +3,7 @@
 using namespace std;
 class client
 {
-private:
+protected:
 	char* first_name;
 	char* last_name;
 	int age;
@@ -27,5 +27,6 @@ public:
 	bool operator ==(int restriction);
 	friend istream& operator>>(istream& in, client& c);
 	friend ostream& operator<<(ostream& out, client c);
-
+	virtual void print();
+	virtual void helpful_material(string material);
 };

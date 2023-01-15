@@ -188,10 +188,11 @@ int date::getDay()
 }
 
 void date::setStartTime(int* start_time,int length_start_time)
-{
-	if (this->start_time != nullptr && length_start_time >0 && length_start_time <=10)
+{	
+	if (start_time!= nullptr && length_start_time >0 && length_start_time <=10)
 	{
 		delete[] this->start_time;
+		this->length_start_time = length_start_time;
 		this->start_time = new int[length_start_time];
 		for (int i = 0; i < length_start_time; i++)
 		{

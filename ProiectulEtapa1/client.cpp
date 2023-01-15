@@ -1,5 +1,6 @@
 #include "client.h"
 #include <string>
+#include"Disabilities.h"
 client::client()
 {
 	first_name = nullptr;
@@ -199,6 +200,28 @@ string client::getCategory()
 	return category;
 }
 
+void client:: print()
+{
+	cout << "Other: The customer is expected at the show together with the identity document." << endl;
+}
+void Disabilities::print()
+{
+	cout << "Other: The client with dysfunctions will have free medical support and guidance throughout the event." << endl;
+}
+void client::helpful_material(string material)
+{
+	cout << "You have a special entrance so that there is as much convenience as possible!" << endl;
+}
+void Disabilities::helpful_material(string material)
+{
+	cout << "Your mobility aid: " << material << endl;
+}
+//void Disabilities::print_special()
+//{
+//	cout << "Ati selectat tipul de bilet pt o persoana cu nevoi speciale";
+//}
+
+
 int client::average_age_all_round(client* cl, int nr_clienti)
 {
 	double sum_age = 0;
@@ -247,29 +270,22 @@ bool client::operator ==(int restriction)
 	}
 	return false; //Access allowed with parental consent
 }
+
 istream& operator>>(istream& in, client& c)
 {
 	cout << "First Name: ";
-	if (c.first_name != nullptr)
-	{
 		delete[] c.first_name;
-		c.first_name = nullptr;
-		string buffer;
-		in >> buffer;
-		c.first_name = new char[buffer.length()];
-		strcpy_s(c.first_name,buffer.length(), buffer.c_str());
-	}
+		string buffer1;
+		in >> buffer1;
+		c.first_name = new char[buffer1.length()+1];
+		strcpy_s(c.first_name,buffer1.length()+1, buffer1.c_str());
 	cout << endl;
 	cout << "Last Name: ";
-	if (c.last_name != nullptr)
-	{
 		delete[] c.last_name;
-		c.last_name = nullptr;
-		string buffer;
-		in >> buffer;
-		c.last_name = new char[buffer.length()+1];
-		strcpy_s(c.last_name, buffer.length()+1, buffer.c_str());
-	}
+		string buffer2;
+		in >> buffer2;
+		c.last_name = new char[buffer2.length()+1];
+		strcpy_s(c.last_name, buffer2.length()+1, buffer2.c_str());
 	cout << endl;
 	cout << "Age: ";
 	in >> c.age;
@@ -281,15 +297,66 @@ istream& operator>>(istream& in, client& c)
 
 ostream& operator<<(ostream& out, client c)
 {
-	if (c.first_name != nullptr)
-	{
 		out << "First Name: " << c.first_name << endl;
-	}
-	if (c.last_name != nullptr)
-	{
 		out << "Last Name: " << c.last_name << endl;
-	}
 	out << "Age: " << c.age << endl;
 	out << "Category: " << c.category << endl;
 	return out;
 }
+	
+
+
+
+
+
+
+	Disabilities::Disabilities()
+	{
+		problem = "N/A";
+		severity = 0;
+	}
+	//calling the base constructor
+	Disabilities::Disabilities(char* first_name, char* last_name, int age, string category,
+		string problem) : client(first_name, last_name, age, category)
+	{
+		this->problem = problem;
+		this->severity = 0;
+	}
+
+	//calling the base constructor in the case of the copy constructor
+	Disabilities::Disabilities(const Disabilities& ds) : client(ds)
+	{
+		this->severity= ds.severity;
+		this->problem = ds.problem;
+	}
+	Disabilities& Disabilities:: operator=(const Disabilities& ds)
+	{
+		if (this != &ds)
+		{
+			client::operator=(ds);
+			this->severity = ds.severity;
+			this->problem = ds.problem;
+		}
+		return *this;
+	}
+
+ostream& operator<<(ostream& out, Disabilities d)
+{
+	//out << (client)d << endl;
+	out << "Problem: " << d.problem << endl;
+	out << "Severity: " << d.severity << endl;
+	return out;
+}
+
+istream& operator>>(istream& in, Disabilities& d)
+{
+	//in >> (client&)d;
+	cout << "Problem: ";
+	in >> d.problem;
+	cout << "Severity: ";
+	in >> d.severity;
+	return in;
+}
+
+
+

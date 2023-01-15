@@ -1,10 +1,13 @@
 #pragma once
 #include<iostream>
+#include "otherEvent.h"
+#include <vector>
 using namespace std;
 
-class event
+class event : public otherEvent
 {
 private:
+	vector<int> VectTickets;
 	char* location;
 	string name_event;
 	static int nrMaxTickets;
@@ -36,5 +39,10 @@ public:
 	bool operator< (int restriction);
 	friend ostream& operator<<(ostream& out, event ev);
 	friend istream& operator>>(istream& in, event& ev);
+     void print_temp();
+	 void addElement(int x);
+	 int getElement(int index);
+	 vector<int> getVect();
+	 int getElemVect(int i);
 };
 

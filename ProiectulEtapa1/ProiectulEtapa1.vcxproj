@@ -136,7 +136,9 @@
   <ItemGroup>
     <ClInclude Include="client.h" />
     <ClInclude Include="date.h" />
+    <ClInclude Include="Disabilities.h" />
     <ClInclude Include="event.h" />
+    <ClInclude Include="otherEvent.h" />
     <ClInclude Include="ticket.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

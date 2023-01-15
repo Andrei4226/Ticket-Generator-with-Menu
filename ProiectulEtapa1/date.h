@@ -15,7 +15,7 @@ public:
 	date(int year, int month, int day, int* start_time, int length_start_time);
 	date(const date& d);
 	date& operator=(const date& d);
-	void setYear(int yeyar);
+	void setYear(int year);
 	int getYear();
 	void setMonth(int month);
 	int getMonth();

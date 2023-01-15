@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include "event.h"
+#include<vector>
 
 using namespace std;
 class ticket
@@ -19,9 +20,10 @@ private:
 	event c;
 	static int ticketsStandardSell;
 	static int ticketsVipSell;
+	static int ticketsSell;
 public:
 	ticket();
-	ticket(int nrRow, int nrColumn, float price, string area);
+	ticket(int nrRow, int nrColumn, float price, string area,int **place);
 	ticket(const ticket& tic);
 	ticket& operator=(const ticket& ticket);
 	~ticket();
@@ -30,13 +32,13 @@ public:
 	void setColumn(int column);
 	int getColumn();
 	void setRow(int row);
-	int getpriceStandard();
+	float getpriceStandard();
 	void setpriceStandard(int priceStandard);
-	int getpriceVip();
+	float getpriceVip();
 	void setpriceVip(int priceVip);
-	int getPriceTicket();
+	float getPriceTicket();
 	void setPriceTicket(string area);
-	int getArea(int nrRand, int nrColoana);
+	string getArea();
 	void setArea(string area);
 	string setArea();
 	friend istream& operator>>(istream& in, ticket& tic);
@@ -46,5 +48,16 @@ public:
 	ticket operator-(int price);
 	float sum_price_tickets_areaVip_sell();
 	float sum_price_tickets_areaStandard_sell();
+	float sell_ticket();
+	int getPlace(int row, int column);
+	void setPlace(int** matrix);
+	void setID(int row, int colomn, int** place);
+	static int getticketsStandardSell();
+	static void setticketsStandardSell(int values);
+	static int getticketsVipSell();
+	static void setticketsVipSell(int values);
+	static int getticketsSell();
+	static void setticketsSell(int a, int b);
+	
 };
 
