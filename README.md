@@ -10,5 +10,6 @@ The menu offers the possibility to read data from txt files or to communicate di
   - Ticket ID verification
   - Lottery based on a random choice of a ticket ID
   - Exit option
+
 The project is built using classes in which I have implemented inheritances, pure virtual methods, operator overloading, members and static functions, indexing operators, pointer members, validations etc.
 To view the project, you can open the (.sln) file and click on the Run button.
