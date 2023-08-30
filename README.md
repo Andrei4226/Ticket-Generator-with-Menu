@@ -3,9 +3,8 @@ The entire interface is designed from both the entrepreneur's and the client's p
 The menu offers the possibility to read data from txt files or to communicate directly with the selected section.Once you have chosen the desired event, you have the following features:
   - Event details
   - Ticket reservation
-  - Number of available tickets
+  - Number of available tickets and sold
   - Total number of tickets available for sale
-  - Total number of tickets sold
   - Seat matrix
   - Ticket ID verification
   - Lottery based on a random choice of a ticket ID
